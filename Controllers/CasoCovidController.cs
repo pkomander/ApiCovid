@@ -92,7 +92,7 @@ namespace ApiCovid.Controllers
                     TotalCasoCovidDto total = new TotalCasoCovidDto();
                     foreach (var item2 in busca)
                     {
-                        total.Date = item2.Date;
+                        total.Date = item.Date;
                         total.Location = item2.Location;
                         total.Variant = item2.Variant;
                         total.TotalCasos = busca.Sum(x => x.Num_Sequesces_total);
@@ -110,6 +110,24 @@ namespace ApiCovid.Controllers
                 return Ok(TotalCasoCovidDto.OrderBy(x => x.Location).OrderBy(x => x.Variant).ToList());
             }
             return NotFound();
+        }
+
+        [Route(@"dates/")]
+        [HttpGet]
+        //http://localhost:5000/CasoCovid/dates/
+        public IActionResult RecuperaCasoCovidDatas()
+        {
+            List<string> data = new List<string>();
+            var casoCovid = _context.CasoCovids.ToList();
+            foreach(var item in casoCovid)
+            {
+                if(data.Contains(item.Date.ToString("d")) == false)
+                {
+                    data.Add(item.Date.ToString("d"));
+                }
+            }
+
+            return Ok(data);
         }
 
         [HttpPut("{id}")]

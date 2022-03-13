@@ -5,5 +5,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>ApiCovid</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\FilmesApi\ApiCovid\ApiCovid\Properties\PublishProfiles\ApiCovidAzure - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

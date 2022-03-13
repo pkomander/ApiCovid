@@ -36,6 +36,17 @@ namespace ApiCovid
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiCovid", Version = "v1" });
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            //adicionando o cors para poder fazer request ajax
+            //services.AddCors(opts =>
+            //{
+            //    opts.AddPolicy("CorsPolicy", builder => builder
+            //    .AllowAnyOrigin()
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader()
+            //    .AllowCredentials());
+            //});
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +58,12 @@ namespace ApiCovid
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiCovid v1"));
             }
+
+            //adicionando o cors para poder fazer request ajax
+            app.UseCors(
+                opts => opts.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
