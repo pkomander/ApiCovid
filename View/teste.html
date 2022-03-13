@@ -13,11 +13,12 @@
     <div class="containerBusca">
         <div>
             <h2>buscar data:</h2>
-            <input type="date" name="dataInicial" id="data" onchange="PegaData()">
+            <input type="date" name="dataInicial" id="data" >
+            <button type="button" class="btn btn-primary" onclick="PegaData()">Buscar</button>
         </div>
         
         <div>
-            <h2>listar por:</h2>
+            <h2>listar datas disponiveis:</h2>
             <select id="selectOption" onChange="pegaSelect()">
                 <option></option>
                 <option value="Listar datas">Listar datas</option>
@@ -92,9 +93,10 @@
                 type: "GET",
                 url: 'https://localhost:5001/CasoCovid/daterangeTotal/'+date+'',
                 success: function (dados) {
+                    let tbody = document.querySelector("#tbody");
+                    tbody.innerHTML = "";
                     console.log(dados);
                     $(dados).each(function (i) {
-                        let tbody = document.querySelector("#tbody");
                         tbody.innerHTML += `
                         <tr>
                             <th>`+dados[i].variant+`</th>    
