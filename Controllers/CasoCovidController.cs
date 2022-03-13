@@ -102,7 +102,6 @@ namespace ApiCovid.Controllers
                     locationAnterior = item.Location;
                     variantAnterior = item.Variant;
                 }
-
             }
 
             if(TotalCasoCovidDto != null)
