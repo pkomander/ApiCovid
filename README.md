@@ -3,7 +3,11 @@ Api feita para mostrar casos de covid no mundo, a busca pode ser feita por data 
 
 # Linguagens utilizadas
 ° Api construida utilizando C# .net.
-° Pacotes Usados no projeto: AutoMapper, Microsoft.AspNetCore.Cors, Microsoft.EntityFrameWorkCore, Microsoft.EntityFrameWorkCore.SqlServer, Microsoft.EntityFrameWorkCore.Tools.
+° Pacotes Usados no projeto: 
+AutoMapper, Microsoft.AspNetCore.Cors, 
+Microsoft.EntityFrameWorkCore, 
+Microsoft.EntityFrameWorkCore.SqlServer, 
+Microsoft.EntityFrameWorkCore.Tools.
 ° Postman usado para teste de rotas.
 ° Banco de dados: SQLServer que está instanciado no Azure, contem informações sobre os casos de covid disponibilizados pela Kaggle.
 ° Front-end: Html, Css, JavaScript, Boostrap consumindo informações com Ajax.
