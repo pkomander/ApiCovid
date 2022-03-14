@@ -32,6 +32,8 @@
             </div>
         </div>
 
+        <div id="regions_div" style="width: 900px; height: 500px; margin-left: 20%;margin-bottom: 5px;"></div>
+
         <div class="tabelas">
             <div class="table-wrapper-scroll-y my-custom-scrollbar" id="divTabela">
                 <table class="table table-earnings table-earnings__challenge">
@@ -97,6 +99,7 @@
         }
     </style>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
@@ -120,6 +123,89 @@
             }
             else if(option.value == "Casos por data"){
                 InfoCovidData(data)
+            }
+        }
+
+        function montaMapa(dados){
+            google.charts.load('current', {
+                'packages':['geochart'],
+                'mapsApiKey': 'AIzaSyDcupMo8jpfMUq2yTR57XslLCar_Rz7fe4'
+            });
+            google.charts.setOnLoadCallback(drawRegionsMap);
+
+            function drawRegionsMap() {
+                // var data = google.visualization.arrayToDataTable([
+                // ['Country', 'totalCasos'],
+                // [''+dados[0].location+'', dados[0].totalCasos, dados[0].date ],
+                // [''+dados[1].location+'', dados[1].totalCasos, dados[1].date],
+                // [''+dados[2].location+'', dados[2].totalCasos, dados[2].date],
+                // [''+dados[3].location+'', dados[3].totalCasos, dados[3].date],
+                // [''+dados[4].location+'', dados[4].totalCasos, dados[4].date],
+                // [''+dados[5].location+'', dados[5].totalCasos, dados[5].date]
+                // ]);
+
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Country'); // Implicit domain label col.
+                data.addColumn('number', 'Popularity'); // Implicit series 1 data col.
+                data.addColumn({type:'string', role:'tooltip'});  // interval role col.
+                data.addRows([
+                    [''+dados[0].location+'',dados[0].totalCasos, 'Variant: '+dados[0].variant+', total de casos:'+dados[0].totalCasos+''],
+                    [''+dados[1].location+'',dados[1].totalCasos, 'Variant: '+dados[1].variant+', total de casos:'+dados[1].totalCasos+''],
+                    [''+dados[2].location+'',dados[2].totalCasos, 'Variant: '+dados[2].variant+', total de casos:'+dados[2].totalCasos+''],
+                    [''+dados[3].location+'',dados[3].totalCasos, 'Variant: '+dados[3].variant+', total de casos:'+dados[3].totalCasos+''],
+                    [''+dados[4].location+'',dados[4].totalCasos, 'Variant: '+dados[4].variant+', total de casos:'+dados[4].totalCasos+''],
+                    [''+dados[5].location+'',dados[5].totalCasos, 'Variant: '+dados[5].variant+', total de casos:'+dados[5].totalCasos+''],
+                    [''+dados[6].location+'',dados[6].totalCasos, 'Variant: '+dados[6].variant+', total de casos:'+dados[6].totalCasos+''],
+                    [''+dados[7].location+'',dados[7].totalCasos, 'Variant: '+dados[7].variant+', total de casos:'+dados[7].totalCasos+''],
+                    [''+dados[8].location+'',dados[8].totalCasos, 'Variant: '+dados[8].variant+', total de casos:'+dados[8].totalCasos+''],
+                    [''+dados[9].location+'',dados[9].totalCasos, 'Variant: '+dados[9].variant+', total de casos:'+dados[9].totalCasos+''],
+                    [''+dados[10].location+'',dados[10].totalCasos, 'Variant: '+dados[10].variant+', total de casos:'+dados[10].totalCasos+''],
+                    [''+dados[11].location+'',dados[11].totalCasos, 'Variant: '+dados[11].variant+', total de casos:'+dados[11].totalCasos+''],
+                    [''+dados[12].location+'',dados[12].totalCasos, 'Variant: '+dados[12].variant+', total de casos:'+dados[12].totalCasos+''],
+                    [''+dados[13].location+'',dados[13].totalCasos, 'Variant: '+dados[13].variant+', total de casos:'+dados[13].totalCasos+''],
+                    [''+dados[14].location+'',dados[14].totalCasos, 'Variant: '+dados[14].variant+', total de casos:'+dados[14].totalCasos+''],
+                    [''+dados[15].location+'',dados[15].totalCasos, 'Variant: '+dados[15].variant+', total de casos:'+dados[15].totalCasos+''],
+                    [''+dados[16].location+'',dados[16].totalCasos, 'Variant: '+dados[16].variant+', total de casos:'+dados[16].totalCasos+''],
+                    [''+dados[17].location+'',dados[17].totalCasos, 'Variant: '+dados[17].variant+', total de casos:'+dados[17].totalCasos+''],
+                    [''+dados[18].location+'',dados[18].totalCasos, 'Variant: '+dados[18].variant+', total de casos:'+dados[18].totalCasos+''],
+                    [''+dados[19].location+'',dados[19].totalCasos, 'Variant: '+dados[19].variant+', total de casos:'+dados[19].totalCasos+''],
+                    [''+dados[20].location+'',dados[20].totalCasos, 'Variant: '+dados[20].variant+', total de casos:'+dados[20].totalCasos+''],
+                    [''+dados[21].location+'',dados[21].totalCasos, 'Variant: '+dados[21].variant+', total de casos:'+dados[21].totalCasos+''],
+                    [''+dados[22].location+'',dados[22].totalCasos, 'Variant: '+dados[22].variant+', total de casos:'+dados[22].totalCasos+''],
+                    [''+dados[23].location+'',dados[23].totalCasos, 'Variant: '+dados[23].variant+', total de casos:'+dados[23].totalCasos+''],
+                    [''+dados[24].location+'',dados[24].totalCasos, 'Variant: '+dados[24].variant+', total de casos:'+dados[24].totalCasos+''],
+                    [''+dados[25].location+'',dados[25].totalCasos, 'Variant: '+dados[25].variant+', total de casos:'+dados[25].totalCasos+''],
+                    [''+dados[26].location+'',dados[26].totalCasos, 'Variant: '+dados[26].variant+', total de casos:'+dados[26].totalCasos+''],
+                    [''+dados[27].location+'',dados[27].totalCasos, 'Variant: '+dados[27].variant+', total de casos:'+dados[27].totalCasos+''],
+                    [''+dados[28].location+'',dados[28].totalCasos, 'Variant: '+dados[28].variant+', total de casos:'+dados[28].totalCasos+''],
+                    [''+dados[29].location+'',dados[29].totalCasos, 'Variant: '+dados[29].variant+', total de casos:'+dados[29].totalCasos+''],
+                    [''+dados[30].location+'',dados[30].totalCasos, 'Variant: '+dados[30].variant+', total de casos:'+dados[30].totalCasos+''],
+                    [''+dados[31].location+'',dados[31].totalCasos, 'Variant: '+dados[31].variant+', total de casos:'+dados[31].totalCasos+''],
+                    [''+dados[32].location+'',dados[32].totalCasos, 'Variant: '+dados[32].variant+', total de casos:'+dados[32].totalCasos+''],
+                    [''+dados[33].location+'',dados[33].totalCasos, 'Variant: '+dados[33].variant+', total de casos:'+dados[33].totalCasos+''],
+                    [''+dados[34].location+'',dados[34].totalCasos, 'Variant: '+dados[34].variant+', total de casos:'+dados[34].totalCasos+''],
+                    [''+dados[35].location+'',dados[35].totalCasos, 'Variant: '+dados[35].variant+', total de casos:'+dados[35].totalCasos+''],
+                    [''+dados[36].location+'',dados[36].totalCasos, 'Variant: '+dados[36].variant+', total de casos:'+dados[36].totalCasos+''],
+                    [''+dados[37].location+'',dados[37].totalCasos, 'Variant: '+dados[37].variant+', total de casos:'+dados[37].totalCasos+''],
+                    [''+dados[38].location+'',dados[38].totalCasos, 'Variant: '+dados[38].variant+', total de casos:'+dados[38].totalCasos+''],
+                    [''+dados[39].location+'',dados[39].totalCasos, 'Variant: '+dados[39].variant+', total de casos:'+dados[39].totalCasos+''],
+                    [''+dados[40].location+'',dados[40].totalCasos, 'Variant: '+dados[40].variant+', total de casos:'+dados[40].totalCasos+''],
+                    [''+dados[41].location+'',dados[41].totalCasos, 'Variant: '+dados[41].variant+', total de casos:'+dados[41].totalCasos+''],
+                    [''+dados[42].location+'',dados[42].totalCasos, 'Variant: '+dados[42].variant+', total de casos:'+dados[42].totalCasos+''],
+                    [''+dados[43].location+'',dados[43].totalCasos, 'Variant: '+dados[43].variant+', total de casos:'+dados[43].totalCasos+''],
+                    [''+dados[44].location+'',dados[44].totalCasos, 'Variant: '+dados[44].variant+', total de casos:'+dados[44].totalCasos+''],
+                    [''+dados[45].location+'',dados[45].totalCasos, 'Variant: '+dados[45].variant+', total de casos:'+dados[45].totalCasos+''],
+                    [''+dados[46].location+'',dados[46].totalCasos, 'Variant: '+dados[46].variant+', total de casos:'+dados[46].totalCasos+''],
+                    [''+dados[47].location+'',dados[47].totalCasos, 'Variant: '+dados[47].variant+', total de casos:'+dados[47].totalCasos+''],
+                    [''+dados[48].location+'',dados[48].totalCasos, 'Variant: '+dados[48].variant+', total de casos:'+dados[48].totalCasos+''],
+                    [''+dados[49].location+'',dados[49].totalCasos, 'Variant: '+dados[49].variant+', total de casos:'+dados[49].totalCasos+''],
+                ]);
+
+                var options = {};
+
+                var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+                chart.draw(data, options);
             }
         }
     
@@ -154,6 +240,7 @@
                         `
                         // document.writeln("<p>Nome: " + dados[i].variant + " | URL: " + dados[i].totalCasos + "</p>")
                     });
+                    montaMapa(dados);
                 }
             }); 
         }
