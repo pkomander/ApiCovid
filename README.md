@@ -8,10 +8,10 @@ AutoMapper, Microsoft.AspNetCore.Cors,
 Microsoft.EntityFrameWorkCore, 
 Microsoft.EntityFrameWorkCore.SqlServer, 
 Microsoft.EntityFrameWorkCore.Tools.
-° Postman usado para teste de rotas.
-° Banco de dados: SQLServer que está instanciado no Azure, contem informações sobre os casos de covid disponibilizados pela Kaggle.
-° Front-end: Html, Css, JavaScript, Boostrap consumindo informações com Ajax.
-° Mapa criado utilizando o googleCharts consumindo informações da API e passando para o grafico.
+#° Postman usado para teste de rotas.
+#° Banco de dados: SQLServer que está instanciado no Azure, contem informações sobre os casos de covid disponibilizados pela Kaggle.
+#° Front-end: Html, Css, JavaScript, Boostrap consumindo informações com Ajax.
+#° Mapa criado utilizando o googleCharts consumindo informações da API e passando para o grafico.
 
 
 # Como Instalar o Projeto
