@@ -43,9 +43,10 @@ namespace ApiCovid.Controllers
         [HttpGet]
         public IActionResult RecuperaCasoCovid()
         {
-            List<CasoCovid> casoCovid = _context.CasoCovids.ToList();
-            return Ok(casoCovid);
-            //return Ok(_context.CasoCovids);
+            //recuperando todos os casos
+            //List<CasoCovid> casoCovid = _context.CasoCovids.ToList();
+            return Ok("Fullstack Challenge 2021 🏅 - Covid Daily Cases");
+            //return Ok(casoCovid);
         }
 
         [HttpGet("{id}")]
@@ -60,9 +61,11 @@ namespace ApiCovid.Controllers
             return NotFound();
         }
 
-        [Route(@"daterange/{date}")]
+        //[Route(@"daterange/{date}")]
+        [Route(@"cases/{date}/count")]
         [HttpGet("{date}")]
         //http://localhost:5000/CasoCovid/daterange/2020-07-06
+        //http://localhost:5000/CasoCovid/cases/2020-07-06/count
         public IActionResult RecuperarCasoCovidPorData(DateTime date)
         {
             List<CasoCovid> casoCovid = _context.CasoCovids.Where(x => x.Date == date)
@@ -75,9 +78,11 @@ namespace ApiCovid.Controllers
             return NotFound();
         }
 
-        [Route(@"daterangeTotal/{date}")]
+        //[Route(@"daterangeTotal/{date}")]
+        [Route(@"cases/{date}/cumulative")]
         [HttpGet("{date}")]
         //http://localhost:5000/CasoCovid/daterangeTotal/2020-07-06
+        //http://localhost:5000/CasoCovid/cases/2020-07-06/cumulative
         public IActionResult RecuperarCasoCovidPorDataTotal(DateTime date)
         {
             var casoCovid = _context.CasoCovids.Where(x => x.Date == date).ToList();
